@@ -1,13 +1,12 @@
 import re
 import csv
-from DB_dir import *
 
 
 class AuthInSystem:
 
     def response_from_users_db(self):
 
-        with open("testi.csv", "r") as users_list:
+        with open("../DB_dir/users.csv", "r") as users_list:
             # if users_list.read() == "" or " " or "{}":
             #     return ">>No users found. Create new"
             # else:
