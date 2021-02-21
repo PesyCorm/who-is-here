@@ -7,13 +7,14 @@ class AuthInSystem:
     def response_from_users_db(self):
 
         with open("../DB_dir/users.csv", "r") as users_list:
-            # if users_list.read() == "" or " " or "{}":
-            #     return ">>No users found. Create new"
-            # else:
-            #     return users_list.read()
-            reader = csv.reader(users_list)
-            for line in reader:
-                print(line)
+            reader = dict(csv.reader(users_list))
+            if len(reader) >= 2:
+                return reader
+            else:
+                return ">>No users found. Create new"
+
+    def password_verification(self):
+        pass
 
     def request_from_users_page(self):
         pass
@@ -22,7 +23,7 @@ class AuthInSystem:
 
         while True:
 
-            new_users_login = input("Enter login for new user: ")
+            new_users_login = input(">>Enter login for new user: ")
 
             if new_users_login == "quit":
                 return "quit"
@@ -51,4 +52,4 @@ class AuthInSystem:
                 print("Login can include letters a-z, A-Z and numbers 0-9\nTry again")
                 return 0
 
-AuthInSystem().response_from_users_db()
+print(AuthInSystem().response_from_users_db())

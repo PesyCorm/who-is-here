@@ -26,7 +26,7 @@ if __name__ == "__main__":
             user = AuthInSystem().user_create()
             if user == "quit":
                 exit()
-            user = user + "_:"
+            user += "_:"
         else:
             print(users_list_response)
             user = input(">>Select an available user:")
