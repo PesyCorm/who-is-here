@@ -6,7 +6,7 @@ class AuthInSystem:
 
     def response_from_users_db(self):
 
-        with open("../DB_dir/users.csv", "r") as users_list:
+        with open("DB_dir/users.csv", "r") as users_list:
             reader = dict(csv.reader(users_list))
             if len(reader) >= 2:
                 return reader
@@ -51,5 +51,3 @@ class AuthInSystem:
             else:
                 print("Login can include letters a-z, A-Z and numbers 0-9\nTry again")
                 return 0
-
-print(AuthInSystem().response_from_users_db())

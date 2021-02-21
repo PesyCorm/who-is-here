@@ -14,6 +14,7 @@
 from SystemCommand import help_response, \
                             AuthInSystem
 from SystemOnOff import SystemWork
+from Common.ConsoleColor import *
 
 
 if __name__ == "__main__":
@@ -26,11 +27,15 @@ if __name__ == "__main__":
             user = AuthInSystem().user_create()
             if user == "quit":
                 exit()
-            user += "_:"
+            
         else:
-            print(users_list_response)
-            user = input(">>Select an available user:")
-
+            print(out_fore_blue(">>List of users in the system:\n"))
+            for el in list(users_list_response):
+                if "password" or "None" in users_list_response[el]:
+                    continue
+                print(users_list_response[el])
+            user = input("\n>>Select an available user:")
+        user += "_:"
 
         while True:
 
@@ -38,7 +43,7 @@ if __name__ == "__main__":
 
             if len(request) < 3:
 
-                print(">>Unexpected request. try again or enter 'help'")
+                print(">>Unexpected request. Try again or enter 'help'")
                 continue
 
             elif request[0:3] == "cd ":

@@ -1,15 +1,18 @@
 import shutil
-import platform
+# import platform
 
 support = True
-if platform.system() == "Windows":
-    if platform.version() >= "10.0.10586":
-        import ctypes
+# if platform.system() == "Windows":
+#     if int(platform.release()) >= 10:
+#         if platform.version() >= "10.0.10586":
+#             import ctypes
 
-        kernel32 = ctypes.windll.kernel32
-        kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
-    else:
-        support = False
+#             kernel32 = ctypes.windll.kernel32
+#             kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+#         else:
+#             support = False
+#     else:
+#         support = False
 
 
 def return_output(text, fill_sep):
