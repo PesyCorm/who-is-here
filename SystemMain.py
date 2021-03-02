@@ -23,27 +23,33 @@ if __name__ == "__main__":
 
         users_list_response = AuthInSystem().response_from_users_db()
 
-        if ">>No users found" in users_list_response:
+        if "<<No users found" in users_list_response:
+            print(out_fore_blue(users_list_response))
             user = AuthInSystem().user_create()
             if user == "quit":
                 exit()
             
         else:
-            print(out_fore_blue(">>List of users in the system:\n"))
+            print(out_fore_blue("<<List of users in the system:\n"))
             for el in list(users_list_response):
-                if "password" or "None" in users_list_response[el]:
+                if "name" in el or "None" in el:
                     continue
-                print(users_list_response[el])
-            user = input("\n>>Select an available user:")
-        user += "_:"
+                print(el)
+            user = input("\n<<Select an available user:")
+        if user == "new user":
+            AuthInSystem().request_from_users_page(user)
+        user += "@py.sys"
+        user = out_fore_cyan(user)
+        user_req = user + ">>"
+        system_resp = out_fore_blue("py.sys>> ")
 
         while True:
 
-            request = input(user)
+            request = input(user_req)
 
             if len(request) < 3:
 
-                print(">>Unexpected request. Try again or enter 'help'")
+                print(system_resp + out_fore_red("Unexpected request. Try again or enter 'help'"))
                 continue
 
             elif request[0:3] == "cd ":
