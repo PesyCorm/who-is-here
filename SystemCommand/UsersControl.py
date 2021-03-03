@@ -6,24 +6,24 @@ class AuthInSystem:
 
     def response_from_users_db(self):
 
-        with open("DB_dir/users.csv", "r") as users_list:
-            reader = dict(csv.reader(users_list))
-            counter = 0
+        # with open("DB_dir/users.csv", "r") as users_list:
+        #     reader = dict(csv.reader(users_list))
+        #     counter = 0
 
-            if len(reader) >= 2:
+        #     if len(reader) >= 2:
 
-                for el in list(reader):
+        #         for el in list(reader):
 
-                    if "name" in el or "None" in el:
-                        continue
-                    counter += 1
+        #             if "name" in el or "None" in el:
+        #                 continue
+        #             counter += 1
 
-                if counter > 0:
-                    return reader
-                return "<<No users found. Create new"
+        #         if counter > 0:
+        #             return reader
+        #         return "<<No users found. Create new"
 
-            else:
-                return "<<No users found. Create new"
+        #     else:
+        #         return "<<No users found. Create new"
 
     def request_from_users_page(self, text):
 
